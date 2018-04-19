@@ -36,7 +36,7 @@ for (var i = 0; i < numBoxes; i++) {
             270,
             1,
             1,
-            '#' + "F5F5DC",
+            '#' + "FFFFFF",
             elem.id);
 }
 
