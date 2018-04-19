@@ -1,17 +1,17 @@
+#container2 {
+    width: 700px;
+    height: 600px;
+    position: absolute;
+    background: blue;
+    border-style: solid;
+}
+
 #container {
     width: 800px;
     height: 600px;
     position: relative;
     background: black;
     border-style: solid;
-}
-
-#container2 {
-    width: 700px;
-    height: 600px;
-    position: relative;
-    background: white;
-    border-style: dashed;
 }
 
 

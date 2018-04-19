@@ -1,4 +1,3 @@
-// Box Object definition
 function Box(xpos, ypos, xstep, ystep, color, id) {
     this.xpos = xpos;
     this.ypos = ypos;
@@ -14,17 +13,13 @@ function Box(xpos, ypos, xstep, ystep, color, id) {
     }
 }
 
-// Some variables that we need below
 var boxes = [];
 var numBoxes = 1;
-var container = document.getElementById("container");
 var container2 = document.getElementById("container2");
 
-function middle() {
+var container = document.getElementById("container");
 
-}
 
-// Dynamically create the boxes
 for (var i = 0; i < numBoxes; i++) {
     var elem = document.createElement("div");
     elem.className = "box";
@@ -36,15 +31,13 @@ for (var i = 0; i < numBoxes; i++) {
             270,
             1,
             1,
-            '#' + "FFFFFF",
+            '#' + "0000FF",
             elem.id);
 }
 
 var id = setInterval(frame, 5);
 
-// The animation code
 function frame() {
-    // Box 1
     for (var i = 0; i < boxes.length; i++) {
         if (boxes[i].xpos > 780 || boxes[i].xpos < 0) {
             boxes[i].xstep = -boxes[i].xstep;
@@ -58,6 +51,8 @@ function frame() {
         boxes[i].render();
     }
 }
+
+//---------------------------------------------------------//
 
 function Paddle(xpos, ypos, xstep, ystep, color, id) {
     this.xpos = xpos;
@@ -74,23 +69,47 @@ function Paddle(xpos, ypos, xstep, ystep, color, id) {
     }
 }
 
-// Some variables that we need below
 var paddlez = [];
-var numPaddles = 2;
+var numPaddles = 1;
+var container = document.getElementById("container");
 
 for (var i = 0; i < numPaddles; i++) {
     var elem = document.createElement("div");
     elem.className = "paddle";
     elem.id = "paddle" + i;
     container.appendChild(elem);
+    paddlez[i] =
+        new Paddle(
+            0,
+            240,
+            0,
+            1,
+            '#' + "0000FF",
+            elem.id);
+    paddlez[0].render();
+
 }
+
 
 for (var i = 0; i < numPaddles; i++) {
     var elem = document.createElement("div");
     elem.className = "paddle2";
     elem.id = "paddle2" + i;
     container.appendChild(elem);
+    paddlez[i] =
+        new Paddle(
+            783,
+            240,
+            0,
+            1,
+            '#' + "0000FF",
+            elem.id);
+    paddlez[0].render();
+
 }
+
+
+//--------------------------------------------------------------------------//
 
 function game() {
     this.context = ui.getContext("2d");
