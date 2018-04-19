@@ -78,15 +78,14 @@ for (var i = 0; i < numPaddles; i++) {
     elem.className = "paddle";
     elem.id = "paddle" + i;
     container.appendChild(elem);
-    paddlez[i] =
-        new Paddle(
-            0,
-            240,
-            0,
-            1,
-            '#' + "0000FF",
-            elem.id);
-    paddlez[0].render();
+    var rect1 = new Paddle(
+        0,
+        240,
+        0,
+        1,
+        '#' + "0000FF",
+        elem.id);
+    rect1.render();
 
 }
 
@@ -96,18 +95,23 @@ for (var i = 0; i < numPaddles; i++) {
     elem.className = "paddle2";
     elem.id = "paddle2" + i;
     container.appendChild(elem);
-    paddlez[i] =
-        new Paddle(
-            783,
-            240,
-            0,
-            1,
-            '#' + "0000FF",
-            elem.id);
-    paddlez[0].render();
+    var rect2 = new Paddle(
+        783,
+        240,
+        0,
+        1,
+        '#' + "0000FF",
+        elem.id);
+    rect2.render();
 
 }
-
+//https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection//
+if (rect1.x < rect2.x + rect2.width &&
+    rect1.x + rect1.width > rect2.x &&
+    rect1.y < rect2.y + rect2.height &&
+    rect1.height + rect1.y > rect2.y) {
+    // collision detected!
+}
 
 //--------------------------------------------------------------------------//
 
