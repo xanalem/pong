@@ -1,4 +1,4 @@
-function Box(xpos, ypos, xstep, ystep, color, id) {
+ function Box(xpos, ypos, xstep, ystep, color, id) {
     this.xpos = xpos;
     this.ypos = ypos;
     this.xstep = xstep;
@@ -31,7 +31,7 @@ for (var i = 0; i < numBoxes; i++) {
             270,
             1,
             1,
-            '#' + "0000FF",
+            '#' + "FFFFFF",
             elem.id);
 }
 
@@ -83,7 +83,7 @@ for (var i = 0; i < numPaddles; i++) {
         240,
         0,
         1,
-        '#' + "0000FF",
+        '#' + "FFFFFF",
         elem.id);
     rect1.render();
 
@@ -100,41 +100,37 @@ for (var i = 0; i < numPaddles; i++) {
         240,
         0,
         1,
-        '#' + "0000FF",
+        '#' + "FFFFFF",
         elem.id);
     rect2.render();
 
 }
-//https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection//
-if (rect1.x < rect2.x + rect2.width &&
-    rect1.x + rect1.width > rect2.x &&
-    rect1.y < rect2.y + rect2.height &&
-    rect1.height + rect1.y > rect2.y) {
-    // collision detected!
-}
 
+function frame1() {
+    for (var i = 0; i < boxes.length; i++) {
+        if (rect1.x < boxes[i].x + boxes[i].width &&
+            rect1.x + rect1.width > boxes[i].x &&
+            rect1.y < boxes[i].y + boxes[i].height &&
+            rect1.height + boxes[i].y > boxes[i].y) {
+
+            boxes[i].xstep = -boxes[i].xstep;
+        }
+
+
+
+        if (rect2.x < boxes[i].x + boxes[i].width &&
+            rect2.x + rect2.width > boxes[i].x &&
+            rect2.y < boxes[i].y + boxes[i].height &&
+            rect2.height + boxes[i].y > boxes[i].y) {
+
+            boxes[i].xstep = -boxes[i].xstep;
+
+        }
+
+        boxes[i].xpos = boxes[i].xpos + boxes[i].xstep;
+        boxes[i].ypos = boxes[i].ypos + boxes[i].ystep;
+        boxes[i].render();
+    }
+}
 //--------------------------------------------------------------------------//
 
-function game() {
-    this.context = ui.getContext("2d");
-    this.context.fillStyle = "white";
-    this.keys = new KeyListener();
-
-    this.p1 = new Paddle(5, 0);
-    this.p1.y = this.height / 2 - this.p1.height / 2;
-    this.p2 = new Paddle(this.width - 5 - 2, 0);
-    this.p2.y = this.height / 2 - this.p2.height / 2;
-}
-
-// Initialize our game instance
-var game = new game();
-
-function MainLoop() {
-    game.update();
-    game.draw();
-    // Call the main loop again at a frame rate of 30fps
-    setTimeout(MainLoop, 33.3333);
-}
-
-// Start the game execution
-MainLoop();
