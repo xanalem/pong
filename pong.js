@@ -3,7 +3,7 @@ var width = 700;
 var height = 600;
 canvas.width = width;
 canvas.height = height;
-var context = canvas.getContext('2d');
+
 
 function Box(xpos, ypos, xstep, ystep, color, id) {
     this.xpos = xpos;
@@ -45,13 +45,13 @@ var elem1 = document.createElement("div");
 elem1.className = "box";
 elem1.id = "box";
 container.appendChild(elem1);
-var box = new Box(400, 270, 1, 1, '#' + "00FFFF", elem1.id);
+var box = new Box(400, 270, 1, 1, '#' + "FFFFFF", elem1.id);
 
 var elem = document.createElement("div");
 elem.className = "paddle";
 elem.id = "paddle";
 container.appendChild(elem);
-var rect1 = new Paddle(0, 240, 0, 1, '#' + "FFFFFF", elem.id);
+var rect1 = new Paddle(0, 240, 0, 1, '#' + "00FFFF", elem.id);
 
 var elem2 = document.createElement("div");
 elem2.className = "paddle2";
@@ -59,6 +59,24 @@ elem2.id = "paddle2";
 container.appendChild(elem2);
 var rect2 = new Paddle(783, 240, 0, 1, '#' + "FFFFFF", elem2.id);
 
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+function keyDownHandler(k) {
+    if (k.keyCode == 37) {
+        leftPressed = true;
+    } else if (k.keyCode == 39) {
+        rightPressed = true;
+    }
+}
+
+function keyUpHandler(k) {
+    if (k.keyCode == 81) {
+        leftPressed = false;
+    } else if (k.keyCode == 65) {
+        rightPressed = false;
+    }
+}
 
 function frame() {
     if (rect1.x < box.x + box.width &&
@@ -87,5 +105,11 @@ function frame() {
 }
 var id = setInterval(frame, 5);
 
-
+function test() {
+    if (rightPressed && paddleXpos < canvas.width - paddleWidth) {
+        paddleXpos += 5;
+    } else if (leftPressed && paddleXpos > 0) {
+        paddleXpos -= 5;
+    }
+}
 //---------------------------------------------------------//
