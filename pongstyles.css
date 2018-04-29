@@ -37,7 +37,6 @@
     top: 240px;
     left: 0px;
     border-style: dashed;
-    background: white;
 }
 
 .paddle2 {
@@ -47,6 +46,6 @@
     top: 240px;
     right: 0px;
     border-style: dashed;
-    background: white;
+
 
 }
