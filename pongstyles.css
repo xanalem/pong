@@ -1,9 +1,9 @@
 #container2 {
-    width: 400px;
+    width: 353px;
     height: 600px;
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 20px;
+    left: 130px;
     background: transparent;
     border-style: dashed;
     border-color: white;
@@ -37,6 +37,9 @@
     top: 240px;
     left: 0px;
     border-style: dashed;
+
+    background: blue;
+
 }
 
 .paddle2 {
@@ -46,6 +49,10 @@
     top: 240px;
     right: 0px;
     border-style: dashed;
+
+
+
+    background: green;
 
 
 }
